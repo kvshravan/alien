@@ -5,7 +5,6 @@ Alien invader game made using python
 Step 1 -
 ```
 git clone https://github.com/kvshravan/alien.git
-
 ```
 
 Step 2 - 
