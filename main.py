@@ -9,6 +9,7 @@ size = (800,600)
 
 # create screen
 screen = pygame.display.set_mode(size)
+clock = pygame.time.Clock()
 
 # background
 BLACK = (0,40,60)
@@ -41,7 +42,7 @@ for i in range(num_enemies):
     enemyImg.append(pygame.image.load('monster.png'))
     enemyX.append(random.randint(0,735))
     enemyY.append(random.randint(25, 100))
-    enemyX_change.append(1.5)
+    enemyX_change.append(3)
     enemyY_change.append(70)
 
 def enemy(x,y,i):
@@ -53,7 +54,7 @@ bulletImg = pygame.image.load('bullet.png')
 bulletX = 0
 bulletY = 500
 bulletX_change = 0
-bulletY_change = 7
+bulletY_change = 14
 bulletState = "ready"
 
 def fire_bullet(x,y):
@@ -103,9 +104,9 @@ while running:
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_change = -3.5
+                playerX_change = -8
             if event.key == pygame.K_RIGHT:
-                playerX_change = 3.5
+                playerX_change = 8
             if event.key == pygame.K_SPACE:
                 if bulletState == "ready":
                     bulletSound = pygame.mixer.Sound('laser.wav')
@@ -135,11 +136,11 @@ while running:
         enemyX[i] += enemyX_change[i]
         if enemyX[i]<= 0:
             enemyX[i] = 0
-            enemyX_change[i] = 1.5
+            enemyX_change[i] = 3
             enemyY[i]  += enemyY_change[i]
         elif enemyX[i] >= 736:
             enemyX[i] = 736
-            enemyX_change[i] = -1.5
+            enemyX_change[i] = -3
             enemyY[i] += enemyY_change[i]
 
         # Collison
@@ -169,3 +170,4 @@ while running:
     show_score(textX,textY)
 
     pygame.display.update()
+    clock.tick(60)
