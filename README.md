@@ -13,7 +13,7 @@ cd alien
 ```
 Step 3 - 
 ```
-pip3 install -r requirements.txt
+pip3 install pygame
 ```
 
 Step 4 - 
